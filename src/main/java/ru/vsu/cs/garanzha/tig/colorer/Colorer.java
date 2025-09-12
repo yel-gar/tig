@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Colorer {
-    private static final Pattern tagPattern = Pattern.compile("<c:(.+)>");
+    private static final Pattern tagPattern = Pattern.compile("<c:(.+?)>");  // the +? is non-greedy quantifier so if there's multiple tags on the line it doesn't greedy match
 
     public static String colored(String text, Color color) {
         return color.getValue() + text + Color.RESET.getValue();
