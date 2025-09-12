@@ -7,9 +7,17 @@ import java.util.InputMismatchException;
 public class Controller {
     private TigFile currentFile;  // null = no file
     private final Prompter prompter;
+    private int waitDelay = 1000;
 
     public Controller() {
         this.prompter = new Prompter();
+    }
+
+    public void setWaitDelay(int newDelay) {
+        if (newDelay < 0) {
+            newDelay = 0;
+        }
+        waitDelay = newDelay;
     }
 
     private void mainLoop() throws InterruptedException {
@@ -28,7 +36,7 @@ public class Controller {
             } catch (TigException e) {
                 prompter.printException(e);
             }
-            Thread.sleep(2000);  // yes this is normal for TUI
+            Thread.sleep(waitDelay);  // yes this is normal for TUI
         }
     }
 
