@@ -52,8 +52,8 @@ public class TigFile extends File {
     }
 
     private void loadVersion(int version) throws BadVersion, BadFileException {
-        if (version > maxVersion) {
-            throw new BadVersion(version, maxVersion);
+        if (version > maxVersion || version < 1) {
+            throw new BadVersion(maxVersion);
         }
 
         // TODO this will remove current file version unless it is committed
