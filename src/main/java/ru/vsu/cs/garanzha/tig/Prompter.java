@@ -48,7 +48,12 @@ Version: <c:blue>%d</>
 Last version: <c:blue>%d</>
 
 <c:yellow>[?]</> Enter command:\s"""), file.getMaxVersion(), file.getPath(), file.getCurrentVersion(), file.getMaxVersion());
-        var cmd = scanner.nextLine().strip().toUpperCase();
+        String cmd = "";
+        while (cmd.isEmpty()) {
+            cmd = scanner.nextLine().strip().toUpperCase();
+        }
+        // FIXME for some reason sometimes scanner outputs empty command, this is fix attempt
+        // maybe it's better to do nextChar
         return switch (cmd) {
             case "F" -> Command.SELECT;
             case "C" -> Command.COMMIT;
@@ -81,7 +86,7 @@ Last version: <c:blue>%d</>
     public int promptVersion() throws InputMismatchException {
         clearScreen();
         System.out.println(Colorer.colored("Warning: if unsaved, current file version will be lost. To abort, type non-integer.", Color.YELLOW));
-        System.out.println(Colorer.tagColored("<c:yellow>[?]</> Enter file version: "));
+        System.out.print(Colorer.tagColored("<c:yellow>[?]</> Enter file version: "));
         return scanner.nextInt();
     }
 

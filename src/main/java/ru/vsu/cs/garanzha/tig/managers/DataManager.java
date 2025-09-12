@@ -29,8 +29,8 @@ public class DataManager {
         return new File(DATA_DIR + "/" + String.format("%s-%d.tigdata", b64Name, version));
     }
 
-    public static File getMetaFile(String filepath, int version) {
+    public static File getMetaFile(String filepath) {
         var b64Name = DataManager.getTigFilename(filepath);
-        return new File(DATA_DIR + "/" + String.format("%s-%d.json", b64Name, version));
+        return new File(DATA_DIR + "/" + String.format("%s.json", b64Name));
     }
 }

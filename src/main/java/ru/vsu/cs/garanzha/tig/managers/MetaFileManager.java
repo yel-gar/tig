@@ -23,7 +23,7 @@ public class MetaFileManager {
         var data = new TigFileJSONModel(file.getCurrentVersion(), file.getMaxVersion());
         var json = GSON.toJson(data);
 
-        var metaFile = DataManager.getMetaFile(file.getPath(), file.getCurrentVersion());
+        var metaFile = DataManager.getMetaFile(file.getPath());
         try (
             var writer = new FileWriter(metaFile)){
             writer.write(json);
@@ -33,7 +33,7 @@ public class MetaFileManager {
     }
 
     public static TigFileJSONModel loadMetaFile(TigFile file) {
-        var metaFile = DataManager.getMetaFile(file.getPath(), file.getCurrentVersion());
+        var metaFile = DataManager.getMetaFile(file.getPath());
         try {
             var scanner = new Scanner(metaFile);
             var sb = new StringBuilder();
