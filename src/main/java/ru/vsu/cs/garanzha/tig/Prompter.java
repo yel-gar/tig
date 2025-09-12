@@ -22,13 +22,14 @@ public class Prompter {
     public Command promptCommand(TigFile file) {
         clearScreen();
         if (file == null) {
-            System.out.println(Colorer.tagColored("""
+            System.out.printf(Colorer.tagColored("""
 <c:green>[F]</> - Select file
 <c:green>[Q]</> - Quit application
 -------------------
+Workdir: <c:cyan>%s</>
 <c:red>No file selected!</>
 
-<c:yellow>[?]</> Enter command:\s"""));
+<c:yellow>[?]</> Enter command:\s"""), System.getProperty("user.dir"));
             var cmd = scanner.nextLine().strip().toUpperCase();
             return switch (cmd) {
                 case "F" -> Command.SELECT;
@@ -64,15 +65,11 @@ Last version: <c:blue>%d</>
     public void printException(String text) {
         clearScreen();
         System.out.println(Colorer.colored("[!] ERROR : " + text, Color.RED));
-        System.out.println("-".repeat(20));
-        System.out.println("\n");
     }
 
     public void printSuccess(String text) {
         clearScreen();
         System.out.println(Colorer.colored("[✓] ", Color.GREEN) + text);
-        System.out.println("-".repeat(20));
-        System.out.println("\n");
     }
 
     public String promptRelPath() {

@@ -53,6 +53,7 @@ public class Controller {
         }
         // TODO load file data from JSON here
         this.currentFile = file;
+        prompter.printSuccess("File selected!");
     }
 
     public void commit() {
@@ -77,6 +78,7 @@ public class Controller {
             try {
                 var version = prompter.promptVersion();
                 currentFile.goToVersion(version);
+                prompter.printSuccess("Version changed!");
                 return;
             } catch (InputMismatchException e) {
                 prompter.printException("Aborted");
