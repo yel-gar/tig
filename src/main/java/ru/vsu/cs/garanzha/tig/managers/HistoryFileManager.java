@@ -1,6 +1,5 @@
 package ru.vsu.cs.garanzha.tig.managers;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.zip.GZIPInputStream;
@@ -16,7 +15,7 @@ public class HistoryFileManager {
         try (
                 var fis = new FileInputStream(file);
                 var gis = new GZIPInputStream(fis)
-                ) {
+        ) {
             return gis.readAllBytes();
         } catch (Exception e) {
             throw new RuntimeException(e);  // TODO handling
@@ -27,8 +26,8 @@ public class HistoryFileManager {
         DataManager.checkDirectory();
         var file = DataManager.getDataFile(filepath, version);
         try (
-            var fos = new FileOutputStream(file);
-            var gos = new GZIPOutputStream(fos)) {
+                var fos = new FileOutputStream(file);
+                var gos = new GZIPOutputStream(fos)) {
             gos.write(data);
         } catch (Exception e) {
             throw new RuntimeException(e);  // TODO might wanna handle this better

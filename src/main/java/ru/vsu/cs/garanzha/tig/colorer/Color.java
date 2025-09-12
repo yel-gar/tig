@@ -17,8 +17,12 @@ public enum Color {
 
     private final String value;
 
-    private Color(String value) {
+    Color(String value) {
         this.value = value;
+    }
+
+    public static Color getByName(String name) {
+        return valueOf(name.toUpperCase());
     }
 
     public String getValue() {
@@ -28,9 +32,5 @@ public enum Color {
     @Override
     public String toString() {
         return this.value;
-    }
-
-    public static Color getByName(String name) {
-        return valueOf(name.toUpperCase());
     }
 }

@@ -6,7 +6,10 @@ import ru.vsu.cs.garanzha.tig.exceptions.UnsaveableVersion;
 import ru.vsu.cs.garanzha.tig.managers.HistoryFileManager;
 import ru.vsu.cs.garanzha.tig.managers.MetaFileManager;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class TigFile extends File {
     private int currentVersion;

@@ -1,7 +1,7 @@
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
 import ru.vsu.cs.garanzha.tig.managers.DataManager;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FilenameTest {
     @Test

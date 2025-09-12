@@ -5,8 +5,8 @@ import ru.vsu.cs.garanzha.tig.exceptions.*;
 import java.util.InputMismatchException;
 
 public class Controller {
-    private TigFile currentFile;  // null = no file
     private final Prompter prompter;
+    private TigFile currentFile;  // null = no file
     private int waitDelay = 1000;
 
     public Controller() {

@@ -1,19 +1,26 @@
 import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ru.vsu.cs.garanzha.tig.Controller;
 import ru.vsu.cs.garanzha.tig.TigFile;
-import ru.vsu.cs.garanzha.tig.exceptions.BadFileException;
 import ru.vsu.cs.garanzha.tig.exceptions.TigException;
-import ru.vsu.cs.garanzha.tig.exceptions.UnsaveableVersion;
 import ru.vsu.cs.garanzha.tig.managers.DataManager;
-import static org.junit.jupiter.api.Assertions.*;
 
-import java.io.*;
-import java.nio.file.Paths;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TigfileTest {
     static final String TEST_FILENAME = "tigfile-test";
+
+    @AfterAll
+    static void cleanup() {
+        new File(TEST_FILENAME).deleteOnExit();
+        DataManager.getDataFile(TEST_FILENAME, 1).deleteOnExit();
+        DataManager.getDataFile(TEST_FILENAME, 2).deleteOnExit();
+        DataManager.getMetaFile(TEST_FILENAME).deleteOnExit();
+    }
 
     @Test
     void testFileCommitGoto() throws TigException {
@@ -27,14 +34,6 @@ public class TigfileTest {
         assertEquals("test version 1", readFromFile(tigfile));
         tigfile.goToVersion(2);
         assertEquals("test version 2", readFromFile(tigfile));
-    }
-
-    @AfterAll
-    static void cleanup() {
-        new File(TEST_FILENAME).deleteOnExit();
-        DataManager.getDataFile(TEST_FILENAME, 1).deleteOnExit();
-        DataManager.getDataFile(TEST_FILENAME, 2).deleteOnExit();
-        DataManager.getMetaFile(TEST_FILENAME).deleteOnExit();
     }
 
     private void writeToFile(File file, String content) {

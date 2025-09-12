@@ -1,7 +1,6 @@
 package ru.vsu.cs.garanzha.tig.managers;
 
 import java.io.File;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Base64;
 

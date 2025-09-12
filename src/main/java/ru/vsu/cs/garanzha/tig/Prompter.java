@@ -23,13 +23,13 @@ public class Prompter {
         clearScreen();
         if (file == null) {
             System.out.printf(Colorer.tagColored("""
-<c:green>[F]</> - Select file
-<c:green>[Q]</> - Quit application
--------------------
-Workdir: <c:cyan>%s</>
-<c:red>No file selected!</>
-
-<c:yellow>[?]</> Enter command:\s"""), System.getProperty("user.dir"));
+                    <c:green>[F]</> - Select file
+                    <c:green>[Q]</> - Quit application
+                    -------------------
+                    Workdir: <c:cyan>%s</>
+                    <c:red>No file selected!</>
+                    
+                    <c:yellow>[?]</> Enter command:\s"""), System.getProperty("user.dir"));
             var cmd = scanner.nextLine().strip().toUpperCase();
             return switch (cmd) {
                 case "F" -> Command.SELECT;
@@ -38,16 +38,16 @@ Workdir: <c:cyan>%s</>
             };
         }
         System.out.printf(Colorer.tagColored("""
-<c:green>[F]</> - Select new file
-<c:green>[C]</> - Commit file version
-<c:green>[G]</> - Go to version (0-%d)
-<c:green>[Q]</> - Quit application
--------------------
-Selected file: <c:green>%s</>
-Version: <c:blue>%d</>
-Last version: <c:blue>%d</>
-
-<c:yellow>[?]</> Enter command:\s"""), file.getMaxVersion(), file.getPath(), file.getCurrentVersion(), file.getMaxVersion());
+                <c:green>[F]</> - Select new file
+                <c:green>[C]</> - Commit file version
+                <c:green>[G]</> - Go to version (0-%d)
+                <c:green>[Q]</> - Quit application
+                -------------------
+                Selected file: <c:green>%s</>
+                Version: <c:blue>%d</>
+                Last version: <c:blue>%d</>
+                
+                <c:yellow>[?]</> Enter command:\s"""), file.getMaxVersion(), file.getPath(), file.getCurrentVersion(), file.getMaxVersion());
         String cmd = "";
         while (cmd.isEmpty()) {
             cmd = scanner.nextLine().strip().toUpperCase();

@@ -1,8 +1,8 @@
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
 import ru.vsu.cs.garanzha.tig.colorer.Color;
 import ru.vsu.cs.garanzha.tig.colorer.Colorer;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ColorerTest {
     @Test
