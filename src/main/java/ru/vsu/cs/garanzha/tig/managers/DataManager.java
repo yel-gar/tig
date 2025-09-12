@@ -1,6 +1,8 @@
 package ru.vsu.cs.garanzha.tig.managers;
 
 import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Base64;
 
 public class DataManager {
@@ -18,9 +20,8 @@ public class DataManager {
     }
 
     private static String getTigFilename(String filepath) {
-        if (filepath.endsWith("/")) {
-            filepath = filepath.substring(0, filepath.length() - 2);
-        }
+        // unify path to ensure valid b64 encode based on relative to current dir
+        filepath = Paths.get(filepath).normalize().toString();
         return Base64.getEncoder().encodeToString(filepath.getBytes());
     }
 
