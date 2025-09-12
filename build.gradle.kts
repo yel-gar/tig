@@ -2,8 +2,8 @@ plugins {
     id("java")
 }
 
-group = "ru.vsu.cs.garanzha"
-version = "1.0-SNAPSHOT"
+group = "ru.vsu.cs.yel-gar"
+version = "0.0.1"
 
 repositories {
     mavenCentral()
