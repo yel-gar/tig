@@ -14,20 +14,19 @@ public class Controller {
 
     private void mainLoop() throws InterruptedException {
         Command cmd;
-        while (true) {
+        boolean running = true;
+        while (running) {
             cmd = prompter.promptCommand(currentFile);
-            if (cmd == Command.QUIT) {
-                break;
-            }
-
             try {
                 switch (cmd) {
+                    case null -> throw new BadCommandException();
+                    case QUIT -> running = false;
                     case COMMIT -> commit();
                     case SELECT -> select();
                     case GOTO -> _goto();
                 }
             } catch (TigException e) {
-                throw new RuntimeException(e);  // TODO handling
+                prompter.printException(e);
             }
             Thread.sleep(2000);  // yes this is normal for TUI
         }
