@@ -58,8 +58,8 @@ public class Controller {
         } else if (file.isDirectory()) {
             throw new BadFileException(path);
         }
-        // TODO load file data from JSON here
         this.currentFile = file;
+        currentFile.loadMeta();
         prompter.printSuccess("File selected!");
     }
 
