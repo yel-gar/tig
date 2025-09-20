@@ -21,12 +21,6 @@ public class TigFile extends File {
         maxVersion = 0;
     }
 
-    public TigFile(String pathname, int currentVersion, int maxVersion) {
-        super(pathname);
-        this.currentVersion = currentVersion;
-        this.maxVersion = maxVersion;
-    }
-
     public void goToVersion(int version) throws BadVersion, BadFileException {
         loadVersion(version);
         saveMeta();  // after version is loaded we have to update saved metadata
